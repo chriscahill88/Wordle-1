@@ -26,3 +26,16 @@ input.ng {
     color: white;
     text-align: center;
 }
+
+.keyArea {
+  max-width: 600px;
+  min-width: 175px;
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.attempts {
+  color: white;
+  text-align; center;
+}
