@@ -1,0 +1,6 @@
+body{
+  background-color: black;
+  --used: rgb(58, 58, 60);
+  --place: #b59f3b;
+  --match: green;
+}
