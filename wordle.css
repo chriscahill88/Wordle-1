@@ -4,3 +4,12 @@ body{
   --place: #b59f3b;
   --match: green;
 }
+
+.guess td {
+  border: 2px solid rgb(58,58,60);
+  width: 64px;
+  height: 64px;
+  font-size: 32px;
+  text-align: center;
+}
+  
