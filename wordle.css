@@ -65,3 +65,8 @@ input.ng {
 .letters.used {
     background-color: var(--used);
 }
+
+.letters span {
+    margin: 0 auto;
+    line-height: 48px;
+}
