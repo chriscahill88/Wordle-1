@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="">
   </head>
   
   <body>
    <h1>Guess the Word</h1>
+    <form id="nextGuess" method="POST" action>
     <table>
       <tbody>
         <tr>
@@ -26,5 +31,15 @@
         </tr>
       </tbody>
     </table>
+    <div class="attempts">
+      6 attempts remaining.
+    </div>
+    <button class="" type="submit" name="check">Check Word</button>
+    </form>
+    <br>
+    <form method="POST" action="">
+      <input hidden="" name="reset" value="reset">
+      <button type="submit">Reset Tries</button>
+    </form>
   </body>
 </html>
