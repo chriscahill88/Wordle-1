@@ -53,3 +53,15 @@ input.ng {
     float: left;
     color: white;
 }
+
+.match, .letters.match {
+    background-color: var(--match);
+}
+
+.place, .letters.place {
+    background-color: var(--place);
+}
+
+.letters.used {
+    background-color: var(--used);
+}
