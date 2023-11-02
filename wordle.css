@@ -70,3 +70,21 @@ input.ng {
     margin: 0 auto;
     line-height: 48px;
 }
+
+.ui.inverted.black.segment {
+    background-color: #1b1c1d!important;
+    color: #fff!important;
+}
+
+.ui.inverted.segment, .ui.primary.inverted.segment {
+    background: #1b1c1d;
+    color: rgba(255,255,255,.9);
+}
+
+.ui[class*="center aligned"].segment {
+    text-align: center;
+}
+
+.ui.segment, .ui.segments .segment {
+    font-size: 1rem;
+}
