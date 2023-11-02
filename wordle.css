@@ -39,3 +39,17 @@ input.ng {
   color: white;
   text-align: center;
 }
+
+.letters {
+    border-radius: 14px;
+    width: 48px;
+    height: 48px;
+    margin: 3px;
+    font-family: sans-serif;
+    font-size: 24px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: grey;
+    float: left;
+    color: white;
+}
