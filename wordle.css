@@ -4,6 +4,7 @@ body{
   --place: #b59f3b;
   --match: green;
   text-align: center;
+  color: white
 }
 
 .guess td {
