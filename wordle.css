@@ -20,8 +20,9 @@ table {
 
 input.ng {
     background-color: black;
+    border-style: solid;
     border-width: 1px;
-    border-color: white;
+    border-color: grey;
     width: 62px;
     height: 62px;
     font-family: sans-serif;
