@@ -1,6 +1,5 @@
 'DEBUG',
 'INPUT',
-'OUTPUT',
 'LINUX',
 'FLOAT',
 'ASCII',
