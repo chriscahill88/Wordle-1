@@ -2,47 +2,50 @@
 <html lang="en">
   <head>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="wordle.css">
+    <link rel="stylesheet" href="WordleProjectDesign.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
-    <link rel="stylesheet" href="wordle.css">
+    <link rel="stylesheet" href="WordleProjectDesign.css">
   </head>
   
   <body>
    <h1>Guess the Word</h1>
-    <form id="nextGuess" method="POST" action>
     <table>
       <tbody>
         <tr>
           <td>
-            <input class="ng" name="guess[0]" maxlength="1" size="1">
+            <input id="spot1"class="ng" name="guess[0]" maxlength="1" size="1">
           </td>
           <td>
-            <input class="ng" name="guess[1]" maxlength="1" size="1">
+            <input class="spot2" name="guess[1]" maxlength="1" size="1">
           </td>
           <td>
-            <input class="ng" name="guess[2]" maxlength="1" size="1">
+            <input class="spot3" name="guess[2]" maxlength="1" size="1">
           </td>
           <td>
-            <input class="ng" name="guess[3]" maxlength="1" size="1">
+            <input class="spot4" name="guess[3]" maxlength="1" size="1">
           </td>
           <td>
-            <input class="ng" name="guess[4]" maxlength="1" size="1">
+            <input class="spot5" name="guess[4]" maxlength="1" size="1">
           </td>
         </tr>
       </tbody>
     </table>
     <div class="attempts">
-      6 attempts remaining.
+      <p>6 attempts remaining.</p>
     </div>
-    <button class="ui button centered" type="submit" name="check">Check Word</button>
-    </form>
+	<div class="checkWord">
+		<input id="checkWordButton" type="button" value="Check Word">
+	</div>
+ 
     <br>
-    <form method="POST" action="">
-      <input hidden="" name="reset" value="reset">
-      <button type="submit">Reset Tries</button>
-    </form>
-    
+	<br>
+	
+	<div class="resetTries">
+		<input id="resetTriesButton" type="button" value="Reset Tries">  
+    </div>
+	
     <br>
+	<br>
     
     <div class="keyArea">
 	<div class="ui letters unused"> 
@@ -125,10 +128,34 @@
 	</div>
     </div>
 		
-    <form method="POST" action="">
-	<input type="hidden" name="random" value="random">
-	<button type="submit" class="ui button small centered">Reset to Random Word</button>
-    </form>
+	<br>
+	<br>
+    <div class="resetWord">
+		<input id="resetWordButton" type="button" value="Reset to Random Word">
+    </div>
     
+	<script>
+		var checkWordBtn = document.querySelector("#checkWordButton");
+		var resetTriesBtn = ducument.querySelector("#resetTriesButton");
+		var resetWordBtn = document.querySelector("#resetWordButton");
+
+		checkWordBtn.addEventListener("click", func());
+		resetTriesBtn.addEventListener("click", func());
+		resetWordBtn.addEventListener("click", func());
+
+		function checkWord () {
+
+		};
+
+		function resetTries () {
+
+		};
+
+		function resetWord () {
+
+		};
+
+	</script>
+
   </body>
 </html>
