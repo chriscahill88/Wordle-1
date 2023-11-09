@@ -115,6 +115,7 @@ input.ng {
     padding: 20px;
     border: 1px solid #1a1a1b;
     width: 40%;
+    text-align: left;
   }
   
   /* The Close Button */
