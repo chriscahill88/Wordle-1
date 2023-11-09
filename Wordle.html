@@ -23,121 +23,123 @@
 	   </div>
    </div>
 
+ 
    <h1>Guess the Word</h1>
     <table>
-      <tbody><tr>
+      <tbody>
+        <tr>
           <td>
-            <input id="spot1" class="ng" name="guess[0]" maxlength="1" size="1">
+            <input id="spot0"class="ng" name="guess[0]" maxlength="1" size="1">
           </td>
           <td>
-            <input id="spot2" class="ng" name="guess[1]" maxlength="1" size="1">
+            <input id="spot1" class="ng" name="guess[1]" maxlength="1" size="1">
           </td>
           <td>
-            <input id="spot3" class="ng" name="guess[2]" maxlength="1" size="1">
+            <input id="spot2" class="ng" name="guess[2]" maxlength="1" size="1">
           </td>
           <td>
-            <input id="spot4" class="ng" name="guess[3]" maxlength="1" size="1">
+            <input id="spot3" class="ng" name="guess[3]" maxlength="1" size="1">
           </td>
           <td>
-            <input id="spot5" class="ng" name="guess[4]" maxlength="1" size="1">
+            <input id="spot4" class="ng" name="guess[4]" maxlength="1" size="1">
           </td>
         </tr>
       </tbody>
     </table>
     <div class="attempts">
-      <p>6 attempts remaining.</p>
+      <p id="attemptsRemaining">6 attempts remaining.</p>
     </div>
 	<div class="checkWord">
-		<input id="checkWordButton" type="button" value="Check Word">
+		<input id="checkWordButton" class="checkWordButton" type="button" value="Check Word">
 	</div>
  
     <br>
 	<br>
 	
 	<div class="resetTries">
-		<input id="resetTriesButton" type="button" value="Reset Tries">  
+		<input id="resetTriesButton" class="resetTriesButton" type="button" value="Reset Tries">  
     </div>
 	
     <br>
 	<br>
     
     <div class="keyArea">
-	<div class="ui letters unused"> 
+	<div id="a" class="ui letters unused"> 
 		<span>a</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="b" class="ui letters unused"> 
 		<span>b</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="c" class="ui letters unused"> 
 		<span>c</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="d" class="ui letters unused"> 
 		<span>d</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="e" class="ui letters unused"> 
 		<span>e</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="f" class="ui letters unused"> 
 		<span>f</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="g" class="ui letters unused"> 
 		<span>g</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="h" class="ui letters unused"> 
 		<span>h</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="i" class="ui letters unused">  
 		<span>i</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="j" class="ui letters unused"> 
 		<span>j</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="k" class="ui letters unused"> 
 		<span>k</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="l" class="ui letters unused"> 
 		<span>l</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="m" class="ui letters unused"> 
 		<span>m</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="n" class="ui letters unused"> 
 		<span>n</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="o" class="ui letters unused"> 
 		<span>o</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div  id="p" class="ui letters unused"> 
 		<span>p</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="q" class="ui letters unused"> 
 		<span>q</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="r" class="ui letters unused"> 
 		<span>r</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="s" class="ui letters unused"> 
 		<span>s</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="t" class="ui letters unused"> 
 		<span>t</span>
 	</div>
-	<div class="ui letters unused"> 
-		<span>u</span>
+	<div id="u" class="ui letters unused"> 
+		<span id="u">u</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="v" class="ui letters unused"> 
 		<span>v</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="w" class="ui letters unused"> 
 		<span>w</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="x" class="ui letters unused"> 
 		<span>x</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="y" class="ui letters unused"> 
 		<span>y</span>
 	</div>
-	<div class="ui letters unused"> 
+	<div id="z" class="ui letters unused"> 
 		<span>z</span>
 	</div>
     </div>
@@ -145,8 +147,14 @@
 	<br>
 	<br>
     <div class="resetWord">
-		<input id="resetWordButton" type="button" value="Reset to Random Word">
+		<input id="resetWordButton" class="resetWordButton" type="button" value="Reset to Random Word">
     </div>
+
+	<br> 
+
+	<div class="revealWord">
+		<input id="answer" type="button" value="Reveal Word">
+	</div>
     
 	<script>
 		//How to play
