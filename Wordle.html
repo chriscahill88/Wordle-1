@@ -166,23 +166,96 @@
 		}
 		
 		var checkWordBtn = document.querySelector("#checkWordButton");
-		var resetTriesBtn = ducument.querySelector("#resetTriesButton");
+		var resetTriesBtn = document.querySelector("#resetTriesButton");
 		var resetWordBtn = document.querySelector("#resetWordButton");
+		var attemptsRemaining = document.getElementById("attemptsRemaining");
 
-		checkWordBtn.addEventListener("click", func());
-		resetTriesBtn.addEventListener("click", func());
-		resetWordBtn.addEventListener("click", func());
+		let tries = 6;
+		const correctWordArray = ['DEBUG',
+							 'INPUT',
+							 'LINUX',
+							 'FLOAT',
+							 'ASCII',
+							 'STACK',
+							 'PIXEL',
+	 	 					 'SHELL',
+							 'CLASS',
+	 						 'ERROR',
+							 'ARRAY',
+							 'CLOUD',
+							 'TOKEN',
+							 'VIRUS',
+							 'SCOPE',
+							 'CLOCK',
+							 'CACHE',
+							 'MACRO',
+							 'APPLE',
+							 'INTEL',
+							 'PROXY',
+							 'ROBOT',
+							 'CYBER',
+							 'LOGIN',
+							 'QUEUE'];
+		
+		var correctWord = getRandomWord();
 
-		function checkWord () {
-
+		checkWordBtn.addEventListener("click", function() {
+			checkWord();
+			updateTries();
+		});
+		
+		resetTriesBtn.addEventListener("click", function() {
+			resetTries();
+		});
+		
+		resetWordBtn.addEventListener("click", function() {
+			resetWord();
+		});
+		
+		function checkWord() {
+			for (var i = 0; i < correctWord.length; i++) {
+				var spot = "spot" + i.toString();
+				var letter = document.getElementById(spot).value;
+				var wrongSpot = false;
+				if (letter == correctWord[i]) {
+					document.getElementById(letter).style.backgroundColor = "green";
+				} else {
+					for (var j = 0; j < correctWord.length; j++) {
+						if (letter == correctWord[j]) {
+							wrongSpot = true;
+						}
+					}
+					if (wrongSpot == true) {
+						document.getElementById(letter).style.backgroundColor = "orange";
+					} else {
+						document.getElementById(letter).style.backgroundColor = "red";
+					}
+				}
+			}
 		};
 
-		function resetTries () {
+		function getRandomWord() {
+			const randomIndex = Math.floor(Math.random() * correctWordArray.length);
+			var result = correctWordArray[randomIndex].toLowerCase();
+  			return result;
+		}
 
+		function updateTries() {
+			tries--;
+			if (tries < 0) {
+				tries = 0;
+			}
+			attemptsRemaining.textContent = `${tries} attempts reamining.`;
 		};
-
+		
+		function resetTries() {
+			tries = 6;
+			attemptsRemaining.textContent = `${tries} attempts reamining.`;
+		};
+		
+		
 		function resetWord () {
-
+			correctWord = getRandomWord();
 		};
 
 	</script>
