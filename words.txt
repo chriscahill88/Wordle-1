@@ -22,4 +22,6 @@
 'PROXY',
 'ROBOT',
 'CYBER',
-'LOGIN'
+'LOGIN',
+'QUEUE'
+
