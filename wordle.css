@@ -3,6 +3,7 @@ body{
   --used: rgb(58, 58, 60);
   --place: #b59f3b;
   --match: green;
+  text-align: center;
 }
 
 .guess td {
