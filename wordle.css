@@ -19,6 +19,8 @@ table {
 
 input.ng {
     background-color: black;
+    border-width: 1px;
+    border-color: white;
     width: 62px;
     height: 62px;
     font-family: sans-serif;
