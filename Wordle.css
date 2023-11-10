@@ -32,7 +32,7 @@ input.ng {
     text-align: center;
 }
 
-//centering the buttons
+/*centering the buttons*/
 .checkWord, .resetWord, .resetTries, .revealWord {
 	text-align: center;
 }
