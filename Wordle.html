@@ -8,7 +8,7 @@
   </head>
   
   <body>
-   <button id="instructions">?</button>
+   <button id="myBtn">?</button>
    <div id="myModal" class="modal">
 	   <div class="modal-content">
 		   <span class="close">&times;</span>
@@ -29,19 +29,19 @@
       <tbody>
         <tr>
           <td>
-            <input id="spot0"class="ng" name="guess[0]" maxlength="1" size="1">
+            <input id="spot0_0"class="ng" name="guess[0]" maxlength="1" size="1">
           </td>
           <td>
-            <input id="spot1" class="ng" name="guess[1]" maxlength="1" size="1">
+            <input id="spot1_0" class="ng" name="guess[1]" maxlength="1" size="1">
           </td>
           <td>
-            <input id="spot2" class="ng" name="guess[2]" maxlength="1" size="1">
+            <input id="spot2_0" class="ng" name="guess[2]" maxlength="1" size="1">
           </td>
           <td>
-            <input id="spot3" class="ng" name="guess[3]" maxlength="1" size="1">
+            <input id="spot3_0" class="ng" name="guess[3]" maxlength="1" size="1">
           </td>
           <td>
-            <input id="spot4" class="ng" name="guess[4]" maxlength="1" size="1">
+            <input id="spot4_0" class="ng" name="guess[4]" maxlength="1" size="1">
           </td>
         </tr>
       </tbody>
@@ -153,81 +153,67 @@
 	<br> 
 
 	<div class="revealWord">
-		<input id="answer" type="button" value="Reveal Word">
+		<input id="revealWordButton" type="button" value="Reveal Word">
 	</div>
     
 	<script>
-		//How to play
-		var modal = document.getElementById("myModal");
-		var btn = document.getElementById("instructions");
-		var span = document.getElementsByClassName("close")[0];
-		btn.onclick = function() {
-		  modal.style.display = "block";
-		}
-		span.onclick = function() {
-		  modal.style.display = "none";
-		}
-		window.onclick = function(event) {
-		  if (event.target == modal) {
-			modal.style.display = "none";
-		  }
-		}
-		
-		var checkWordBtn = document.querySelector("#checkWordButton");
-		var resetTriesBtn = document.querySelector("#resetTriesButton");
-		var resetWordBtn = document.querySelector("#resetWordButton");
-		var attemptsRemaining = document.getElementById("attemptsRemaining");
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
 
-		let tries = 6;
-		const correctWordArray = ['DEBUG',
-							 'INPUT',
-							 'LINUX',
-							 'FLOAT',
-							 'ASCII',
-							 'STACK',
-							 'PIXEL',
-	 	 					 'SHELL',
-							 'CLASS',
-	 						 'ERROR',
-							 'ARRAY',
-							 'CLOUD',
-							 'TOKEN',
-							 'VIRUS',
-							 'SCOPE',
-							 'CLOCK',
-							 'CACHE',
-							 'MACRO',
-							 'APPLE',
-							 'INTEL',
-							 'PROXY',
-							 'ROBOT',
-							 'CYBER',
-							 'LOGIN',
-							 'QUEUE'];
-		
-		var correctWord = getRandomWord();
+        var checkWordBtn = document.querySelector("#checkWordButton");
+        var resetTriesBtn = document.querySelector("#resetTriesButton");
+        var resetWordBtn = document.querySelector("#resetWordButton");
+        var attemptsRemaining = document.getElementById("attemptsRemaining");
+		var revealWordBtn = document.querySelector("#revealWordButton");
 
-		checkWordBtn.addEventListener("click", function() {
-			checkWord();
-			updateTries();
-		});
-		
-		resetTriesBtn.addEventListener("click", function() {
-			resetTries();
-		});
-		
-		resetWordBtn.addEventListener("click", function() {
-			resetWord();
-		});
-		
+        let tries = 6;
+        let guessIndex = 0; // Track the current guess location
+        const correctWordArray = [
+            'DEBUG', 'INPUT', 'LINUX', 'FLOAT', 'ASCII', 'STACK', 'PIXEL', 'SHELL',
+            'CLASS', 'ERROR', 'ARRAY', 'CLOUD', 'TOKEN', 'VIRUS', 'SCOPE', 'CLOCK',
+            'CACHE', 'MACRO', 'APPLE', 'INTEL', 'PROXY', 'ROBOT', 'CYBER', 'LOGIN', 'QUEUE'
+        ];
+
+        var correctWord = getRandomWord();
+
+        checkWordBtn.addEventListener("click", function () {
+            checkWord();
+            updateTries();
+        });
+
+        resetTriesBtn.addEventListener("click", function () {
+            resetTries();
+        });
+
+        resetWordBtn.addEventListener("click", function () {
+            resetGame();
+        });
+		revealWordBtn.addEventListener("click", function () {
+            revealWord();
+        });
 		function checkWord() {
+			var isCorrect = true;
 			for (var i = 0; i < correctWord.length; i++) {
-				var spot = "spot" + i.toString();
+				var spot = "spot" + i.toString()+"_"+guessIndex;
 				var letter = document.getElementById(spot).value;
 				var wrongSpot = false;
 				if (letter == correctWord[i]) {
 					document.getElementById(letter).style.backgroundColor = "green";
+					document.getElementById(spot).style.backgroundColor = "green";
 				} else {
+					isCorrect = false;
 					for (var j = 0; j < correctWord.length; j++) {
 						if (letter == correctWord[j]) {
 							wrongSpot = true;
@@ -235,38 +221,88 @@
 					}
 					if (wrongSpot == true) {
 						document.getElementById(letter).style.backgroundColor = "orange";
+						document.getElementById(spot).style.backgroundColor = "orange";
+						
 					} else {
 						document.getElementById(letter).style.backgroundColor = "red";
+						document.getElementById(spot).style.backgroundColor = "red";
 					}
 				}
 			}
-		};
+			// Increment the guess index for the next guess location
+			guessIndex++;
+			if (!isCorrect) {
+				// If the word is incorrect, add a new guess location
+				addNewGuessLocation();
+			}
+		}
+        function addNewGuessLocation() {
+            // Create a new row for the guessed word input fields
+            var newRow = document.createElement("tr");
 
-		function getRandomWord() {
-			const randomIndex = Math.floor(Math.random() * correctWordArray.length);
-			var result = correctWordArray[randomIndex].toLowerCase();
-  			return result;
+            // Create input fields for the new guess location
+            for (var i = 0; i < correctWord.length; i++) {
+                var newInput = document.createElement("input");
+                newInput.className = "ng";
+                newInput.name = "guess[" + guessIndex + "]";
+                newInput.maxlength = "1";
+                newInput.size = "1";
+                newInput.id = "spot" + i + "_" + guessIndex; // Unique ID for each input
+                newRow.appendChild(document.createElement("td")).appendChild(newInput);
+            }
+
+            // Append the new row to the table body
+            document.querySelector("tbody").appendChild(newRow);
+
+        }
+
+        function getRandomWord() {
+            const randomIndex = Math.floor(Math.random() * correctWordArray.length);
+            var result = correctWordArray[randomIndex].toLowerCase();
+            return result;
+        }
+
+        function updateTries() {
+            tries--;
+            if (tries < 0) {
+                tries = 0;
+            }
+            attemptsRemaining.textContent = `${tries} attempts remaining.`;
+        };
+
+        function resetTries() {
+            tries = 6;
+            attemptsRemaining.textContent = `${tries} attempts remaining.`;
+        };
+
+
+		function resetGame() {
+            correctWord = getRandomWord();
+            resetTries();
+            resetInputFields();
+			resetKeyboardColors();
+        }
+		function resetInputFields() {
+			var tbody = document.querySelector("tbody");
+			while (tbody.firstChild) {
+				tbody.removeChild(tbody.firstChild);
+			}
+			guessIndex = 0;
+			addNewGuessLocation(); // Add the initial input fields
+		}
+		function revealWord() {
+            alert("The correct word is: " + correctWord);
+            resetGame();
+        }
+		function resetKeyboardColors() {
+			var letters = document.querySelectorAll(".letters");
+			letters.forEach(function (letter) {
+				letter.style.backgroundColor = "grey";
+			});
 		}
 
-		function updateTries() {
-			tries--;
-			if (tries < 0) {
-				tries = 0;
-			}
-			attemptsRemaining.textContent = `${tries} attempts reamining.`;
-		};
-		
-		function resetTries() {
-			tries = 6;
-			attemptsRemaining.textContent = `${tries} attempts reamining.`;
-		};
-		
-		
-		function resetWord () {
-			correctWord = getRandomWord();
-		};
+    </script>
 
-	</script>
+</body>
 
-  </body>
 </html>
